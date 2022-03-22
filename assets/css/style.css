@@ -1,0 +1,44 @@
+#wrapper {
+  overflow-x: hidden;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.75rem 1.25rem;
+}
+#sidebar-wrapper .sidebar-heading > h4 {
+  font-size: 1.25rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  margin-left: 15rem;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+body.sb-sidenav-toggled #wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+}
