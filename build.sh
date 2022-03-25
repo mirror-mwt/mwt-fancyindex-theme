@@ -17,7 +17,7 @@ npx purgecss -con ./index.html -css ./dist/assets/css/style.css -s "sb-sidenav-t
 
 # UglifyJS
 mkdir -p ./dist/assets/js
-npx uglifyjs ./assets/js/script.js > ./dist/assets/js/script.js
+npx uglifyjs -c -m -- ./assets/js/script.js > ./dist/assets/js/script.js
 
 touch ./dist/assets/index.html
 touch ./dist/assets/css/index.html
