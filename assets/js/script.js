@@ -13,11 +13,11 @@ window.addEventListener('DOMContentLoaded', event => {
             localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
         });
     }
-    
+
     // Add table tag to table
     const tableElement = document.body.querySelector('#list');
     tableElement.classList.add("table");
-    
+
     // Make current dir active
     const softwareLinks = document.body.querySelector('#software-list').children;
     Array.from(softwareLinks).forEach(function (item, index) {
