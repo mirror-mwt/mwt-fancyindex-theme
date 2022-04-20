@@ -19,6 +19,9 @@ npx purgecss -con ./index.html -css ./dist/assets/css/style.css -s "sb-sidenav-t
 mkdir -p ./dist/assets/js
 npx uglifyjs -c -m -- ./assets/js/script.js > ./dist/assets/js/script.js
 
+# Make the readme-text data
+npm run build
+
 touch ./dist/assets/index.html
 touch ./dist/assets/css/index.html
 touch ./dist/assets/js/index.html
