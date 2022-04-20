@@ -10,9 +10,10 @@
 
 var fs = require('fs');
 var path = require('path');
-var marked = require('marked').marked;
+var md = require('markdown-it')()
+    .use(require('markdown-it-highlightjs'))
+    .use(require('markdown-it-attrs'));
 var PurgeCSS = require('purgecss').PurgeCSS;
-
 
 const readmePath = './readme-text/';
 const jsonPath = './dist/assets/readme-text.json';
@@ -26,7 +27,7 @@ fs.readdirSync(readmePath).forEach(file => {
     const filePath = path.join(__dirname, readmePath, file);
     const fileName = file.split('.').slice(0, -1).join('.');
     const mdString = fs.readFileSync(filePath, 'utf8');
-    const htmlString = marked(mdString);
+    const htmlString = md.render(mdString);
     readmeData[`/${fileName}/`] = htmlString;
 });
 

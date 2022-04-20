@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/mwt/bs-fancyindex#readme",
   "dependencies": {
-    "marked": "^4.0.14",
+    "markdown-it": "^12.3.2",
+    "markdown-it-attrs": "^4.1.3",
+    "markdown-it-highlightjs": "^4.0.1",
     "minify": "^8.0.4",
     "uglifyjs": "^2.4.11"
   },
