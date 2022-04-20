@@ -7,3 +7,5 @@
 |[Main](https://mirror.mwt.me/termux/main)      |`deb https://mirror.mwt.me/termux/main stable main`|
 |[Root](https://mirror.mwt.me/termux/root)      |`deb https://mirror.mwt.me/termux/root root stable`|
 |[X11](https://mirror.mwt.me/termux/x11)        |`deb https://mirror.mwt.me/termux/x11 x11 main`|
+
+{.table .table-sm .table-striped}

@@ -4,6 +4,9 @@ RStudio does not provide an official repository for Debian/Ubuntu. [This reposit
 
 ~~~sh
 sudo wget -O /usr/share/keyrings/mwt.asc "https://mirror.mwt.me/my/gpgkey"
+~~~
+
+~~~sh
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/mwt.asc by-hash=force] https://mirror.mwt.me/my/deb any rstudio" > /etc/apt/sources.list.d/rstudio.list'
 ~~~
 
