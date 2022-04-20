@@ -35,6 +35,11 @@ body.sb-sidenav-toggled #wrapper {
   margin-left: 0;
 }
 
+pre {
+  display: block;
+  overflow-x: auto;
+}
+
 @media (min-width: 768px) {
   #wrapper {
     margin-left: 0;
