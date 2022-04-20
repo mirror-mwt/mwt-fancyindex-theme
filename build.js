@@ -23,7 +23,7 @@ fs.readdirSync(readmePath).forEach(file => {
     const fileName = file.split('.').slice(0, -1).join('.');
     const mdString = fs.readFileSync(filePath, 'utf8');
     const htmlString = marked(mdString);
-    readmeData[`/${fileName}/`] = htmlString.replace(/\n/g, '');
+    readmeData[`/${fileName}/`] = htmlString;
 });
 
 fs.writeFileSync(jsonPath, JSON.stringify(readmeData), err => {
