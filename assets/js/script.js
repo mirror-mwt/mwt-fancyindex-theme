@@ -32,7 +32,9 @@ window.addEventListener('DOMContentLoaded', event => {
             .then(response => response.json())
             .then(data => {
                 if (window.location.pathname in data) {
-                    document.getElementById("readme-text").innerHTML = data[window.location.pathname];
+                    var readmeElement = document.getElementById("readme-text");
+                    readmeElement.innerHTML = data[window.location.pathname];
+                    readmeElement.classList.add("mb-4");
                 }
             });
     };
