@@ -18,11 +18,12 @@ const readmePath = './readme-text/';
 const jsonPath = './dist/assets/readme-text.json'
 var readmeData = {};
 
-fs.readdirSync(readmePath).forEach(filename => {
-    const filePath = path.join(__dirname, readmePath, filename);
-    mdString = fs.readFileSync(filePath, 'utf8');
-    htmlString = marked(mdString);
-    readmeData[filename] = minifyHTML(htmlString);
+fs.readdirSync(readmePath).forEach(file => {
+    const filePath = path.join(__dirname, readmePath, file);
+    const fileName = file.split('.').slice(0, -1).join('.');
+    const mdString = fs.readFileSync(filePath, 'utf8');
+    const htmlString = marked(mdString);
+    readmeData[`/${fileName}/`] = htmlString.replace(/\n/g, '');
 });
 
 fs.writeFileSync(jsonPath, JSON.stringify(readmeData), err => {
