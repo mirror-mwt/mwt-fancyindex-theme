@@ -28,7 +28,7 @@ fs.readdirSync(readmePath).forEach(file => {
     const fileName = file.split('.').slice(0, -1).join('.');
     const mdString = fs.readFileSync(filePath, 'utf8');
     const htmlString = md.render(mdString);
-    readmeData[`/${fileName}/`] = htmlString;
+    readmeData[`/${fileName}/`] = `${htmlString}<hr>`;
 });
 
 fs.writeFileSync(jsonPath, JSON.stringify(readmeData), err => {
@@ -56,7 +56,7 @@ htmlArray.push('./index.html')
 const purgeCSSResult = new PurgeCSS().purge({
     content: htmlArray,
     css: [stylePath],
-    safelist: ["sb-sidenav-toggled", "active", "mb-4"]
+    safelist: ["sb-sidenav-toggled", "active"]
 });
 
 /* write the output to the dist css file */

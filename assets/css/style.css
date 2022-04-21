@@ -32,6 +32,10 @@
   min-height: 100vh;
 }
 
+#readme-text {
+  max-width: 768px;
+}
+
 body.sb-sidenav-toggled #wrapper {
   margin-left: 0;
 }

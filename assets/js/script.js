@@ -34,7 +34,6 @@ window.addEventListener('DOMContentLoaded', event => {
                 if (window.location.pathname in data) {
                     var readmeElement = document.getElementById("readme-text");
                     readmeElement.innerHTML = data[window.location.pathname];
-                    readmeElement.classList.add("mb-4");
                 }
             });
     };
