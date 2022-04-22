@@ -1,4 +1,4 @@
-function runifDOM(func) {
+async function runifDOM(func) {
     if (document.readyState === "complete" | document.readyState === "interactive") {
         func();
     }

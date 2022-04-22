@@ -106,6 +106,10 @@ minify({
     compressor: terser,
     input: './assets/js/script.js',
     output: './dist/assets/script.js',
+    options: {
+        mangle: {toplevel: true},
+        compress: {unsafe: true}
+    },
     callback: function (err, min) { }
 });
 
