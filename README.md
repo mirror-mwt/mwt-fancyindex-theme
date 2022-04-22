@@ -1,6 +1,14 @@
 # Bootstrap Fancyindex
  
- My Nginx fancyindex theme made in Bootstrap. The useful output is in the `/dist` folder. You can generate this folder by running `build.sh`. The relevant configuration for nginx is the following.
+My Nginx fancyindex theme made in Bootstrap. The useful output is in the `/dist` folder.
+
+## Features
+
+This theme is used on mirror.mwt.me. For example [on this page](https://mirror.mwt.me/ghd/). It features a sidebar with links and a Bootstrap 5 layout. It also loads markdown files from `./readme-text/` to optionally display text on the main directories. This is achieved by compiling this text in a json file that is retrieved via client side js. 
+
+## Usage
+
+The relevant configuration for nginx is the following.
 
 ```nginx
 location / {
@@ -30,3 +38,7 @@ sudo ln -s "$REPO_DIR/dist/assets" $NGINX_ROOT/assets
 ```
 
 This is designed to make the header and footer files inaccessible to users, but still allow the JavaScript and CSS to be loaded. It's simple to modify this theme to have just the first symlink and no internal directive.
+
+## Development
+
+You can generate the `dist` folder by running `npm install && npm run build`.
