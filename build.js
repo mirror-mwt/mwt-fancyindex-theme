@@ -14,15 +14,17 @@ var md = require('markdown-it')()
     .use(require('markdown-it-highlightjs'))
     .use(require('markdown-it-attrs'));
 var PurgeCSS = require('purgecss').PurgeCSS;
+var UglifyJS = require("uglify-js");
 
-const readmePath = './readme-text/';
-const jsonPath = './dist/assets/readme-text.json';
-const stylePath = './dist/assets/css/style.css';
-var readmeData = {};
 
 /*=============================================================================
  Export Markdown to JSON Array 
 =============================================================================*/
+
+const readmePath = path.normalize('./readme-text/');
+const jsonPath = path.normalize('./dist/assets/readme-text.json');
+var readmeData = {};
+
 fs.readdirSync(readmePath).forEach(file => {
     const filePath = path.join(__dirname, readmePath, file);
     const fileName = file.split('.').slice(0, -1).join('.');
@@ -38,9 +40,12 @@ fs.writeFileSync(jsonPath, JSON.stringify(readmeData), err => {
     }
 });
 
+
 /*=============================================================================
  PurgeCSS Section 
 =============================================================================*/
+
+const stylePath = path.normalize('./dist/assets/css/style.css');
 
 /* Make an array of html from markdown that purgeCSS needs */
 htmlArray = Object.values(readmeData).map(html => {
@@ -50,7 +55,7 @@ htmlArray = Object.values(readmeData).map(html => {
     }
 });
 /* add the index */
-htmlArray.push('./index.html')
+htmlArray.push(path.normalize('./index.html'));
 
 /* set config options */
 const purgeCSSResult = new PurgeCSS().purge({
@@ -69,3 +74,15 @@ const purgeCSSResult = new PurgeCSS().purge({
         }
     });
 })();
+
+
+/*=============================================================================
+ UglifyJS Section 
+=============================================================================*/
+
+const jsSrcPath = path.normalize('./assets/js/script.js');
+const jsDistPath = path.normalize('./dist/assets/js/script.js');
+
+fs.writeFile(jsDistPath, UglifyJS.minify({
+    "script.js": fs.readFileSync(jsSrcPath, "utf8")
+}).code, (err) => {if (err) throw err;});
