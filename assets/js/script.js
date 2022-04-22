@@ -7,7 +7,7 @@ function runifDOM(func) {
             func();
         });
     }
-};
+}
 
 
 runifDOM( () => {
@@ -34,7 +34,7 @@ runifDOM( () => {
     Array.from(softwareLinks).forEach(function (item, index) {
         if (window.location.href.startsWith(item.href)) {
             item.classList.add("active");
-        };
+        }
     });
 });
 
@@ -51,5 +51,5 @@ runifDOM( () => {
                     });
                 }
             });
-    };
+    }
 })();
