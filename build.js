@@ -54,49 +54,44 @@ async function afterCSS(err, min) {
     const jsonPath = path.normalize('./dist/assets/readme-text.json');
     var readmeData = {};
 
-    fs.readdirSync(readmePath).forEach(file => {
-        const filePath = path.join(__dirname, readmePath, file);
-        const fileName = file.split('.').slice(0, -1).join('.');
-        const mdString = fs.readFileSync(filePath, 'utf8');
-        const htmlString = md.render(mdString);
-        readmeData[`/${fileName}/`] = `${htmlString}<hr>`;
-    });
-
-    fs.writeFileSync(jsonPath, JSON.stringify(readmeData), err => {
-        if (err) {
-            console.error(err)
-            return
-        }
+    fs.readdir(readmePath, (err, files) => {
+        if (err) throw err;
+        files.forEach(file => {
+            const filePath = path.join(__dirname, readmePath, file);
+            const fileName = file.split('.').slice(0, -1).join('.');
+            const mdString = fs.readFileSync(filePath, 'utf8');
+            const htmlString = md.render(mdString);
+            readmeData[`/${fileName}/`] = `${htmlString}<hr>`;
+        });
+        fs.writeFile(jsonPath, JSON.stringify(readmeData), (err) => { if (err) throw err; });
+        purgecssActions(readmeData, min);
     });
 
     /* PurgeCSS Section 
        ================ */
-    const stylePath = './dist/assets/style.css';
+    /* This depends on the HTML made from markdown. So, it's run in the callback */
+    async function purgecssActions(readmeData, min) {
+        const stylePath = './dist/assets/style.css';
 
-    /* Make an array of html from markdown that purgeCSS needs */
-    htmlArray = Object.values(readmeData).map(html => {
-        return {
-            raw: html,
-            extension: 'html'
-        }
-    });
-    /* add the index */
-    htmlArray.push('./index.html');
+        /* Make an array of html from markdown that purgeCSS needs */
+        htmlArray = Object.values(readmeData).map(html => {
+            return {
+                raw: html,
+                extension: 'html'
+            }
+        });
+        /* add the index */
+        htmlArray.push('./index.html');
 
-    /* set config options */
-    const purgeCSSResult = new PurgeCSS().purge({
-        content: htmlArray,
-        css: [stylePath],
-        safelist: ["sb-sidenav-toggled", "active"]
-    });
+        /* set config options */
+        const purgeCSSResult = new PurgeCSS().purge({
+            content: htmlArray,
+            css: [{raw: min, extension: 'css'}],
+            safelist: ["sb-sidenav-toggled", "active"]
+        });
 
-    /* write the output to the dist css file */
-    var x = await purgeCSSResult;
-    fs.writeFileSync(stylePath, x[0].css, err => {
-        if (err) {
-            console.error(err)
-            return
-        }
-    });
-
+        /* write the output to the dist css file */
+        var x = await purgeCSSResult;
+        fs.writeFile(stylePath, x[0].css, err => {if (err) throw err;});
+    };
 };
