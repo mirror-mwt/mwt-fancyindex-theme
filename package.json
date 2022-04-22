@@ -19,7 +19,7 @@
   "dependencies": {
     "@node-minify/core": "^6.2.0",
     "@node-minify/csso": "^6.2.0",
-    "@node-minify/uglify-js": "^6.2.0",
+    "@node-minify/terser": "^6.2.0",
     "markdown-it": "^12.3.2",
     "markdown-it-attrs": "^4.1.3",
     "markdown-it-highlightjs": "^4.0.1",

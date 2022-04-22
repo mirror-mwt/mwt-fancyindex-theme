@@ -27,7 +27,7 @@ const md = require('markdown-it')()
     .use(require('markdown-it-attrs'));
 const minify = require('@node-minify/core');
 const csso = require('@node-minify/csso');
-const uglifyjs = require('@node-minify/uglify-js');
+const terser = require('@node-minify/terser');
 const PurgeCSS = require('purgecss').PurgeCSS;
 
 
@@ -87,7 +87,7 @@ markdownArrayHTML = (async () => {
         const fileName = file.split('.').slice(0, -1).join('.');
         const mdString = fs.readFileSync(filePath, 'utf8');
         const htmlString = md.render(mdString);
-        readmeData[`/${fileName}/`] = `${htmlString}<hr>`;
+        readmeData[`/${fileName}/`] = htmlString;
     });
 
     /* no need to block with this */
@@ -98,12 +98,12 @@ markdownArrayHTML = (async () => {
 
 
 /*=============================================================================
- UglifyJS Section
+ TerserJS Section
 =============================================================================*/
 
 /* nothing depends on this */
 minify({
-    compressor: uglifyjs,
+    compressor: terser,
     input: './assets/js/script.js',
     output: './dist/assets/script.js',
     callback: function (err, min) { }
@@ -152,7 +152,7 @@ Promise.all([cssoPromise, make_htmlArray]).then(out => {
         output: './dist/assets/style.css',
         content: htmlArray,
         css: [{ raw: minCSS, extension: 'css' }],
-        safelist: ["sb-sidenav-toggled", "active"]
+        safelist: ["sb-sidenav-toggled", "active", "hr"]
     });
 
     /* write the output to the dist css file */

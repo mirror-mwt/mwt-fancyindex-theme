@@ -47,7 +47,7 @@ runifDOM( () => {
                 if (window.location.pathname in data) {
                     runifDOM(() => {
                         var readmeElement = document.getElementById("readme-text");
-                        readmeElement.innerHTML = data[window.location.pathname];
+                        readmeElement.innerHTML = `${data[window.location.pathname]}<hr>`;
                     });
                 }
             });
