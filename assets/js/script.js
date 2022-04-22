@@ -1,5 +1,16 @@
-window.addEventListener('DOMContentLoaded', event => {
+function runifDOM(func) {
+    if (document.readyState === "complete" | document.readyState === "interactive") {
+        func();
+    }
+    else {
+        window.addEventListener("DOMContentLoaded", () => {
+            func();
+        });
+    }
+};
 
+
+runifDOM( () => {
     // Toggle the side navigation
     const sidebarToggle = document.body.querySelector('#sidebarToggle');
     if (sidebarToggle) {
@@ -27,15 +38,17 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 });
 
-(async function () {
+(() => {
     // Get readme text
     if (window.location.pathname.split('/').length == 3) {
         fetch('/assets/readme-text.json')
             .then(response => response.json())
             .then(data => {
                 if (window.location.pathname in data) {
-                    var readmeElement = document.getElementById("readme-text");
-                    readmeElement.innerHTML = data[window.location.pathname];
+                    runifDOM(() => {
+                        var readmeElement = document.getElementById("readme-text");
+                        readmeElement.innerHTML = data[window.location.pathname];
+                    });
                 }
             });
     };
