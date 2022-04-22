@@ -11,13 +11,13 @@ awk '
 # Handle CSS
 mkdir -p ./dist/assets/css
 # Minify CSS and merge into a single file
-npx minify ./assets/css/style.css > ./dist/assets/css/style.css
+#npx minify ./assets/css/style.css > ./dist/assets/css/style.css
 # Delete unused classes 
 #npx purgecss -con ./index.html -css ./dist/assets/css/style.css -s "sb-sidenav-toggled" "active" "mb-4" "pre" "code" "language-sh" -o ./dist/assets/css/
 
 # UglifyJS
 mkdir -p ./dist/assets/js
-npx uglifyjs -c -m -- ./assets/js/script.js > ./dist/assets/js/script.js
+#npx uglifyjs -c -m -- ./assets/js/script.js > ./dist/assets/js/script.js
 
 # Make the readme-text data
 npm run build
