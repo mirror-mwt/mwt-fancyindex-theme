@@ -38,8 +38,8 @@ runifDOM( () => {
     });
 });
 
+// Get readme text
 (() => {
-    // Get readme text
     if (window.location.pathname.split('/').length == 3) {
         fetch('/assets/readme-text.json')
             .then(response => response.json())
