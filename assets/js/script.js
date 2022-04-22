@@ -25,17 +25,20 @@ window.addEventListener('DOMContentLoaded', event => {
             item.classList.add("active");
         };
     });
+});
 
+(async function () {
     // Get readme text
     if (window.location.pathname.split('/').length == 3) {
         fetch('/assets/readme-text.json')
             .then(response => response.json())
             .then(data => {
                 if (window.location.pathname in data) {
-                    var readmeElement = document.getElementById("readme-text");
-                    readmeElement.innerHTML = data[window.location.pathname];
+                    document.addEventListener('DOMContentLoaded', (event) => {
+                        var readmeElement = document.getElementById("readme-text");
+                        readmeElement.innerHTML = data[window.location.pathname];
+                    });
                 }
             });
     };
-
-});
+})();
