@@ -34,10 +34,8 @@ window.addEventListener('DOMContentLoaded', event => {
             .then(response => response.json())
             .then(data => {
                 if (window.location.pathname in data) {
-                    document.addEventListener('DOMContentLoaded', (event) => {
-                        var readmeElement = document.getElementById("readme-text");
-                        readmeElement.innerHTML = data[window.location.pathname];
-                    });
+                    var readmeElement = document.getElementById("readme-text");
+                    readmeElement.innerHTML = data[window.location.pathname];
                 }
             });
     };
