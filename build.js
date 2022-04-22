@@ -26,7 +26,7 @@ var PurgeCSS = require('purgecss').PurgeCSS;
 minify({
     compressor: uglifyjs,
     input: './assets/js/script.js',
-    output: './dist/assets/js/script.js',
+    output: './dist/assets/script.js',
     callback: function (err, min) { }
 });
 
@@ -71,7 +71,7 @@ async function afterCSS(err, min) {
 
     /* PurgeCSS Section 
        ================ */
-    const stylePath = './dist/assets/css/style.css';
+    const stylePath = './dist/assets/style.css';
 
     /* Make an array of html from markdown that purgeCSS needs */
     htmlArray = Object.values(readmeData).map(html => {
