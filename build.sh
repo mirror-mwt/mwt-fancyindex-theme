@@ -9,19 +9,20 @@ awk '
 /Begin footer.html/,/End footer.html/{print $0 > "dist/footer.html"}' index.html
 
 # Handle CSS
-mkdir -p ./dist/assets/css
+#mkdir -p ./dist/assets/css
 # Minify CSS and merge into a single file
 #npx minify ./assets/css/style.css > ./dist/assets/css/style.css
 # Delete unused classes 
 #npx purgecss -con ./index.html -css ./dist/assets/css/style.css -s "sb-sidenav-toggled" "active" "mb-4" "pre" "code" "language-sh" -o ./dist/assets/css/
 
 # UglifyJS
-mkdir -p ./dist/assets/js
+#mkdir -p ./dist/assets/js
 #npx uglifyjs -c -m -- ./assets/js/script.js > ./dist/assets/js/script.js
 
 # Make the readme-text data
+mkdir -p ./dist/assets
 npm run build
 
 touch ./dist/assets/index.html
-touch ./dist/assets/css/index.html
-touch ./dist/assets/js/index.html
+#touch ./dist/assets/css/index.html
+#touch ./dist/assets/js/index.html

@@ -38,7 +38,7 @@ minify({
 minify({
     compressor: csso,
     input: './assets/css/*.css',
-    output: './dist/assets/css/style.css',
+    output: './dist/assets/style.css',
     callback: afterCSS
 });
 
