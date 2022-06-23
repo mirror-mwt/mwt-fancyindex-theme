@@ -156,7 +156,7 @@ Promise.all([cssoPromise, make_htmlArray]).then(out => {
         output: './dist/assets/style.css',
         content: htmlArray,
         css: [{ raw: minCSS, extension: 'css' }],
-        safelist: ["sb-sidenav-toggled", "active", "hr"]
+        safelist: ["sb-sidenav-toggled", "active", "hr", "d-none"]
     });
 
     /* write the output to the dist css file */

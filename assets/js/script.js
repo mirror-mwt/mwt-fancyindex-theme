@@ -1,16 +1,4 @@
-async function runifDOM(func) {
-    if (document.readyState === "complete" | document.readyState === "interactive") {
-        func();
-    }
-    else {
-        window.addEventListener("DOMContentLoaded", () => {
-            func();
-        });
-    }
-}
-
-
-runifDOM( () => {
+window.addEventListener("DOMContentLoaded", () => {
     // Toggle the side navigation
     const sidebarToggle = document.body.querySelector('#sidebarToggle');
     if (sidebarToggle) {
@@ -25,12 +13,8 @@ runifDOM( () => {
         });
     }
 
-    // Add table tag to table
-    const tableElement = document.body.querySelector('#list');
-    tableElement.classList.add("table");
-
     // Make current dir active
-    const softwareLinks = document.body.querySelector('#software-list').children;
+    const softwareLinks = document.getElementById('software-list').children;
     Array.from(softwareLinks).forEach(function (item, index) {
         if (window.location.href.startsWith(item.href)) {
             item.classList.add("active");
@@ -38,18 +22,26 @@ runifDOM( () => {
     });
 });
 
-// Get readme text
+// Synchronous part
 (() => {
+    // Add table tag to table
+    const tableElement = document.getElementById('list');
+    tableElement.classList.add("table");
+
+    // Get readme text
     if (window.location.pathname.split('/').length == 3) {
+        // Hide table until we have readme (to avoid layout shift)
+        tableElement.classList.add("d-none");
         fetch('/assets/readme-text.json')
             .then(response => response.json())
             .then(data => {
                 if (window.location.pathname in data) {
-                    runifDOM(() => {
-                        var readmeElement = document.getElementById("readme-text");
-                        readmeElement.innerHTML = `${data[window.location.pathname]}<hr>`;
-                    });
+                    const readmeElement = document.getElementById("readme-text");
+                    readmeElement.innerHTML = `${data[window.location.pathname]}<hr>`;
                 }
+
+                // Display the table again
+                tableElement.classList.remove("d-none");
             });
     }
 })();
