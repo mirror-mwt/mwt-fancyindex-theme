@@ -29,9 +29,6 @@ window.addEventListener("DOMContentLoaded", () => {
 // Get readme text
 (() => {
     if (window.location.pathname.split('/').length == 3) {
-        // Hide table until we have readme (to avoid layout shift)
-        const tableContainer = document.getElementById('table-container');
-        tableContainer.classList.add("d-none");
         fetch('/assets/readme-text.json')
             .then(response => response.json())
             .then(data => {
@@ -40,8 +37,11 @@ window.addEventListener("DOMContentLoaded", () => {
                     readmeElement.innerHTML = `${data[window.location.pathname]}<hr>`;
                 }
 
-                // Display the table again
-                tableContainer.classList.remove("d-none");
+                // Display page content because level 1 index content is loaded
+                document.documentElement.classList.add("load")
             });
+    } else {
+        // Display page content because this is not a level 1 index
+        document.documentElement.classList.add("load")
     }
 })();

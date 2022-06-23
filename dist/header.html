@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="nojs">
 
 <head>
     <meta charset="utf-8">
@@ -8,6 +8,7 @@
     <meta name="description" content="Infrastructure for open source software maintained by Matthew W. Thomas.">
     <link rel="stylesheet" href="/assets/style.css">
     <link rel="preload" href="/assets/readme-text.json" as="fetch" type="application/json" crossorigin="anonymous">
+    <script type="text/javascript">document.documentElement.classList.remove("nojs");</script>
 </head>
 
 <body>
@@ -26,11 +27,11 @@
             </div>
             <div class="text-center mt-3" data-ea-publisher="mirrormwtme" data-ea-type="image"></div>
         </div>
-        <div class="d-flex flex-column" id="page-content-wrapper">
+        <div class="flex-column" id="page-content-wrapper">
             <nav class="navbar navbar-light navbar-expand border-bottom">
                 <div class="container"><button class="btn btn-primary d-md-none" id="sidebarToggle" type="button">Menu</button><a class="navbar-brand" href="https://mattwthomas.com/mirrors/">MWT's Mirrors</a></div>
             </nav>
             <div class="container d-flex flex-column flex-grow-1 p-3">
                 <div id="readme-text"></div>
-                <div class="table-responsive" id="table-container">
                 <script src="/assets/script.js"></script>
+                <div class="table-responsive" id="table-container">

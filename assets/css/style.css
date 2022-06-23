@@ -1,6 +1,3 @@
-@import url(/assets/bootstrap/css/bootstrap.min.css);
-@import url(/assets/css/highlightjs-srcery.css);
-
 #wrapper {
   overflow-x: hidden;
   margin-left: -15rem;
@@ -26,10 +23,23 @@
   width: 15rem;
 }
 
+/* hide sidebar toggle if no js
+   (because it won't work) */
+html.nojs #sidebarToggle {
+  display: none;
+}
+
 #page-content-wrapper {
+  display: none;
   margin-left: 15rem;
   min-width: 100vw;
   min-height: 100vh;
+}
+
+/* display content if js disabled or page loaded */
+html.nojs #page-content-wrapper,
+html.load #page-content-wrapper {
+  display: flex;
 }
 
 body.sb-sidenav-toggled #wrapper {
