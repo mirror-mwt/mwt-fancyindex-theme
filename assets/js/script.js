@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
     // Toggle the side navigation
-    const sidebarToggle = document.body.querySelector('#sidebarToggle');
+    const sidebarToggle = document.getElementById('sidebarToggle');
     if (sidebarToggle) {
         // Uncomment Below to persist sidebar toggle between refreshes
         // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
@@ -13,6 +13,10 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Add table tag to table
+    const tableElement = document.getElementById('list');
+    tableElement.classList.add("table");
+
     // Make current dir active
     const softwareLinks = document.getElementById('software-list').children;
     Array.from(softwareLinks).forEach(function (item, index) {
@@ -22,16 +26,12 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Synchronous part
+// Get readme text
 (() => {
-    // Add table tag to table
-    const tableElement = document.getElementById('list');
-    tableElement.classList.add("table");
-
-    // Get readme text
     if (window.location.pathname.split('/').length == 3) {
         // Hide table until we have readme (to avoid layout shift)
-        tableElement.classList.add("d-none");
+        const tableContainer = document.getElementById('table-container');
+        tableContainer.classList.add("d-none");
         fetch('/assets/readme-text.json')
             .then(response => response.json())
             .then(data => {
@@ -41,7 +41,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 }
 
                 // Display the table again
-                tableElement.classList.remove("d-none");
+                tableContainer.classList.remove("d-none");
             });
     }
 })();
