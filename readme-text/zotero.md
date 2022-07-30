@@ -6,4 +6,4 @@ I have an official mirror of the Debian/Ubuntu repository for the [Zotero citati
 wget -qO- "https://mirror.mwt.me/zotero/install.sh" | sudo sh
 ~~~
 
-Manual installation instructions are available on [the mirrors page](https://mattwthomas.com/mirrors/#zotero).
+Manual installation instructions are available on [the mirrors page](https://matthewthom.as/mirrors/#zotero).

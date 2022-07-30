@@ -6,4 +6,4 @@ RStudio does not provide an official repository for Debian/Ubuntu. This reposito
 wget -qO- "https://mirror.mwt.me/my/install.sh" | sudo sh
 ~~~
 
-More complete installation instructions are available on [the mirrors page](https://mattwthomas.com/mirrors/#rstudio) and in the [README for the project](https://github.com/mwt/rstudio-apt-repo/).
+More complete installation instructions are available on [the mirrors page](https://matthewthom.as/mirrors/#rstudio) and in the [README for the project](https://github.com/mwt/rstudio-apt-repo/).

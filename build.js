@@ -4,7 +4,7 @@
 * @fileoverview Build the template
 *
 * @author Matthew W. Thomas
-* @author https://mattwthomas.com
+* @author https://matthewthom.as
 *
 */
 
