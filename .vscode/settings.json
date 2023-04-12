@@ -3,6 +3,7 @@
         ["/assets", "./dist/assets"],
         ["/ghd", "./"],
         ["/github-desktop", "./"],
+        ["/shiftkey-desktop", "./"],
         ["/my", "./"],
         ["/rclone", "./"],
         ["/termux", "./"],
