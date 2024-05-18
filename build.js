@@ -121,7 +121,11 @@ minify({
 /* we make a promise because we need it in the next section */
 var cssoPromise = minify({
     compressor: csso,
-    input: './assets/css/*.css',
+    input: [
+        './node_modules/bootstrap/dist/css/bootstrap.min.css',
+        './node_modules/highlight.js/styles/srcery.min.css', 
+        './assets/css/*.css'
+    ],
     output: './dist/assets/style.css',
 });
 

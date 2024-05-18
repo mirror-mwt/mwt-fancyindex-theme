@@ -1,11 +1,10 @@
 {
     "liveServer.settings.mount": [
         ["/assets", "./dist/assets"],
-        ["/ghd", "./"],
-        ["/github-desktop", "./"],
         ["/shiftkey-desktop", "./"],
-        ["/my", "./"],
         ["/rclone", "./"],
+        ["/rstudio", "./"],
+        ["/zoom", "./"],
         ["/termux", "./"],
         ["/zotero", "./"]
     ]
